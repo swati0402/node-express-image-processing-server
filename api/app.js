@@ -4,6 +4,6 @@ const path= require('path')
 const pathToIndex=path.resolve(__dirname,'../client/index.html')
 
 app.use('/*', (request, resolve) => {
-    rresponse.sendFile(pathToIndex)
+    response.sendFile(pathToIndex)
   })
-module.exports
+module.exports(app)
