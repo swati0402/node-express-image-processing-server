@@ -5,5 +5,5 @@ const pathToIndex=path.resolve(__dirname,'../client/index.html')
 
 app.use('/*', (request, resolve) => {
     response.sendFile(pathToIndex)
-  })
-module.exports(app)
+  });
+module.exports = app
