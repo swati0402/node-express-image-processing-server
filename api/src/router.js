@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 const multer=require('multer')
+const imageProcessor=require('./imageProcessor')
 
 const path=require('path')
 
@@ -30,11 +31,12 @@ const upload= multer({
     storage:storage
 })
 
-router.post('/upload', upload.single('photo') ,(request,response)=>{
+router.post('/upload', upload.single('photo') ,async (request,response)=>{
     if(request.fileValidationError != null){
         response.status(400).json({error:request.fileValidationError})
     }
     else{
+        imageProcessor(request.file.filename)
         response.status(201).json({success:true})
     }
 })
